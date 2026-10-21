@@ -25,17 +25,25 @@ Error generating stack: `+A.message+`
   <script>(function(){function m(a){var h=a.getAttribute("href");if(!h)return;try{var u=new URL(h,document.baseURI);if((u.protocol==="http:"||u.protocol==="https:")&&u.host!==location.host){a.target="_blank";a.rel="noopener noreferrer";}}catch(e){}}function s(){document.querySelectorAll("a[href]").forEach(m);}if(document.readyState!=="loading"){s();}else{document.addEventListener("DOMContentLoaded",s);}document.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest("a[href]");if(a){m(a);}},true);})();</script>
   <script type="application/json" data-clippy-inline-media-manifest="1">{"version":1,"slots":[]}</script>
 <script>
-setInterval(() => {
-  const imgs = document.querySelectorAll('img');
-  for(let img of imgs){
-    if(img.getAttribute('data-replaced') === '1') continue;
-    if(img.src.includes('ashen.png')) continue;
-    if(img.width > 200){
-       img.src = './ashen.png';
-       img.style.objectFit = 'contain';
-       img.style.background = 'transparent';
-       img.setAttribute('data-replaced','1');
-    }
+(function(){
+  function replaceBook(){
+    document.querySelectorAll('img').forEach(img=>{
+      if(img.src.includes('ashen.png') || img.dataset.replaced==='1') return;
+      if(img.src.includes('logo')) return;
+      let rect = img.getBoundingClientRect();
+      if(rect.top < 900 && rect.width > 200){
+        img.src = './ashen.png';
+        img.style.objectFit = 'contain';
+        img.style.background = 'transparent';
+        img.style.maxHeight = '500px';
+        img.style.borderRadius = '20px';
+        img.dataset.replaced = '1';
+      }
+    });
   }
-}, 800);
+  setInterval(replaceBook, 600);
+  new MutationObserver(replaceBook).observe(document.body,{childList:true,subtree:true});
+})();
 </script>
+</body>
+</html>
