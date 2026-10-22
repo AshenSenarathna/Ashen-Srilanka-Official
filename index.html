@@ -26,27 +26,25 @@ Error generating stack: `+A.message+`
   <script type="application/json" data-clippy-inline-media-manifest="1">{"version":1,"slots":[]}</script> 
   <script>
 <script>
-(function(){
-  function fix(){
-    var imgs = document.querySelectorAll('img');
-    if(imgs[0] && !imgs[0].src.includes('ashen.png')){
-      imgs[0].src = './ashen.png';
-      imgs[0].style.background = 'transparent';
-      imgs[0].style.boxShadow = 'none';
-      imgs[0].style.objectFit = 'contain';
+setInterval(function(){
+  try{
+    var hero = document.querySelector('img');
+    if(hero && hero.src.indexOf('ashen.png') === -1){
+      hero.src = '/Ashen-Srilanka-Official/ashen.png';
+      hero.srcset = '';
+      hero.style.background = 'transparent';
+      hero.style.boxShadow = 'none';
+      hero.style.objectFit = 'contain';
     }
-    // yata workbook eka hoyala maru karanna
-    for(var i=0;i<imgs.length;i++){
-      var top = imgs[i].getBoundingClientRect().top;
-      if(top > 800 && top < 2000){
-        if(!imgs[i].src.includes('workbook-new.png')){
-          imgs[i].src = './workbook-new.png';
-        }
+    var all = document.querySelectorAll('img');
+    for(var i=1;i<all.length;i++){
+      var t = all[i].getBoundingClientRect().top;
+      if(t>800 && t<2500 && all[i].src.indexOf('workbook-new.png')===-1){
+        all[i].src = '/Ashen-Srilanka-Official/workbook-new.png';
       }
     }
-  }
-  setInterval(fix, 800);
-})();
+  }catch(e){}
+}, 300);
 </script>
 </body>
-</html> 
+</html>
