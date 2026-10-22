@@ -24,7 +24,6 @@ Error generating stack: `+A.message+`
 </script>
   <script>(function(){function m(a){var h=a.getAttribute("href");if(!h)return;try{var u=new URL(h,document.baseURI);if((u.protocol==="http:"||u.protocol==="https:")&&u.host!==location.host){a.target="_blank";a.rel="noopener noreferrer";}}catch(e){}}function s(){document.querySelectorAll("a[href]").forEach(m);}if(document.readyState!=="loading"){s();}else{document.addEventListener("DOMContentLoaded",s);}document.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest("a[href]");if(a){m(a);}},true);})();</script>
   <script type="application/json" data-clippy-inline-media-manifest="1">{"version":1,"slots":[]}</script> 
-  <script>
 <script>
 setInterval(function(){
   try{
@@ -35,6 +34,7 @@ setInterval(function(){
       hero.style.background = 'transparent';
       hero.style.boxShadow = 'none';
       hero.style.objectFit = 'contain';
+      hero.style.borderRadius = '0';
     }
     var all = document.querySelectorAll('img');
     for(var i=1;i<all.length;i++){
