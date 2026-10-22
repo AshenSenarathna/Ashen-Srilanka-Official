@@ -25,24 +25,28 @@ Error generating stack: `+A.message+`
   <script>(function(){function m(a){var h=a.getAttribute("href");if(!h)return;try{var u=new URL(h,document.baseURI);if((u.protocol==="http:"||u.protocol==="https:")&&u.host!==location.host){a.target="_blank";a.rel="noopener noreferrer";}}catch(e){}}function s(){document.querySelectorAll("a[href]").forEach(m);}if(document.readyState!=="loading"){s();}else{document.addEventListener("DOMContentLoaded",s);}document.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest("a[href]");if(a){m(a);}},true);})();</script>
   <script type="application/json" data-clippy-inline-media-manifest="1">{"version":1,"slots":[]}</script> 
   <script>
-    <script>
+<script>
 (function(){
-  function fixImages(){
-    document.querySelectorAll('img').forEach(img=>{
-      let top = img.getBoundingClientRect().top;
-      if(top < 700 && img.width > 250 && !img.src.includes('ashen.png')){
-        img.src = './ashen.png';
-        img.style.objectFit = 'contain';
-        img.style.background = 'transparent';
-        img.style.boxShadow = 'none';
+  function fix(){
+    var imgs = document.querySelectorAll('img');
+    if(imgs[0] && !imgs[0].src.includes('ashen.png')){
+      imgs[0].src = './ashen.png';
+      imgs[0].style.background = 'transparent';
+      imgs[0].style.boxShadow = 'none';
+      imgs[0].style.objectFit = 'contain';
+    }
+    // yata workbook eka hoyala maru karanna
+    for(var i=0;i<imgs.length;i++){
+      var top = imgs[i].getBoundingClientRect().top;
+      if(top > 800 && top < 2000){
+        if(!imgs[i].src.includes('workbook-new.png')){
+          imgs[i].src = './workbook-new.png';
+        }
       }
-      if(top > 800 && top < 1600 && img.width > 300 && !img.src.includes('workbook-new.png')){
-        img.src = './workbook-new.png';
-      }
-    });
+    }
   }
-  setInterval(fixImages, 600);
+  setInterval(fix, 800);
 })();
 </script>
 </body>
-</html>
+</html> 
