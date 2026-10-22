@@ -26,25 +26,23 @@ Error generating stack: `+A.message+`
   <script type="application/json" data-clippy-inline-media-manifest="1">{"version":1,"slots":[]}</script> 
 <script>
 setInterval(function(){
-  try{
-    var hero = document.querySelector('img');
-    if(hero && hero.src.indexOf('ashen.png') === -1){
-      hero.src = '/Ashen-Srilanka-Official/ashen.png';
-      hero.srcset = '';
-      hero.style.background = 'transparent';
-      hero.style.boxShadow = 'none';
-      hero.style.objectFit = 'contain';
-      hero.style.borderRadius = '0';
-    }
-    var all = document.querySelectorAll('img');
-    for(var i=1;i<all.length;i++){
-      var t = all[i].getBoundingClientRect().top;
-      if(t>800 && t<2500 && all[i].src.indexOf('workbook-new.png')===-1){
-        all[i].src = '/Ashen-Srilanka-Official/workbook-new.png';
+  var hero = document.querySelector('img');
+  if(hero){
+    var isYellowSection = hero.closest('header') || hero.parentElement;
+    // hero eka witharai check karanne - first big image eka witharai
+    if(document.querySelectorAll('img').length > 0){
+      var firstImg = document.querySelectorAll('img')[0];
+      if(firstImg && firstImg.src.indexOf('ashen.png') === -1){
+        firstImg.src = '/Ashen-Srilanka-Official/ashen.png';
+        firstImg.srcset = '';
+        firstImg.style.background = 'transparent';
+        firstImg.style.boxShadow = 'none';
+        firstImg.style.objectFit = 'contain';
+        firstImg.style.borderRadius = '0';
       }
     }
-  }catch(e){}
-}, 300);
+  }
+}, 600);
 </script>
 </body>
 </html>
